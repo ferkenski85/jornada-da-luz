@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <!-- 
+    UPDATED: Added simple Client-Side Authentication (Login Screen).
+    Password default: "NATAL2025" (Change in the <script> at the bottom).
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Jornada da Luz | Uma Experiência de Natal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fffbeb; }
+        ::-webkit-scrollbar-thumb { background: #d97706; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #b45309; }
+
+        .day-card:hover { transform: translateY(-4px); }
+        
+        /* Login Screen Styles */
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #fffbeb; /* Amber-50 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-amber-50 text-amber-950 antialiased selection:bg-emerald-200 selection:text-emerald-900 overflow-hidden">
+
+    <!-- ===== TELA DE LOGIN (NOVO) ===== -->
+    <div id="login-screen">
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-2xl max-w-md w-full text-center border border-amber-100 mx-4">
+            <div class="mb-6 text-4xl">🎄</div>
+            <h2 class="text-3xl font-bold text-amber-900 mb-2 font-serif">Área Exclusiva</h2>
+            <p class="text-amber-800/80 mb-8">Insira o código de acesso enviado no seu email de compra para iniciar a jornada.</p>
+            
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <input type="text" id="access-code" 
+                        class="w-full px-4 py-3 rounded-lg border border-amber-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 outline-none transition-all text-center text-lg tracking-widest uppercase placeholder:normal-case placeholder:tracking-normal"
+                        placeholder="Digite o código aqui" autocomplete="off">
+                </div>
+                <button type="submit" 
+                    class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-[1.02] shadow-md">
+                    Entrar na Jornada
+                </button>
+                <p id="error-msg" class="text-red-600 text-sm mt-2 hidden font-medium">Código incorreto. Tente novamente.</p>
+            </form>
+            <p class="text-xs text-gray-400 mt-8">Ainda não tem acesso? <a href="#" class="text-emerald-600 hover:underline">Adquira aqui.</a></p>
+        </div>
+    </div>
+
+    <!-- ===== CONTEÚDO DO SITE (Oculto inicialmente) ===== -->
+    <div id="site-content" class="opacity-0 transition-opacity duration-1000">
+        
+        <!-- Navigation (Simple) -->
+        <nav class="fixed w-full z-40 bg-amber-50/90 backdrop-blur-md border-b border-amber-100 py-4 transition-all">
+            <div class="container mx-auto px-6 flex justify-between items-center">
+                <div class="text-xl font-bold tracking-wide text-amber-900">Jornada da Luz</div>
+                <a href="#calendario" class="bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-2 rounded-full text-sm font-semibold transition-colors shadow-md">
+                    Ir para o Calendário
+                </a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-6 overflow-hidden">
+            <div class="container mx-auto text-center relative z-10">
+                <span class="text-emerald-700 font-semibold tracking-wider uppercase text-sm mb-4 block animate-fade-in">Um convite para a família</span>
+                <h1 class="text-5xl md:text-7xl font-bold text-amber-900 mb-6 leading-tight">
+                    24 Dias de <br/><span class="text-emerald-700 italic">Espera e Amor</span>
+                </h1>
+                <p class="text-lg md:text-xl text-amber-800/80 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                    Uma história contada dia a dia, transformando a contagem regressiva para o Natal em memórias afetivas, missões divertidas e conexão real.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#calendario" class="bg-amber-600 hover:bg-amber-700 text-white text-lg px-8 py-4 rounded-full font-semibold shadow-lg transition-all transform hover:scale-105">
+                        Começar a Jornada
+                    </a>
+                    <a href="#sobre" class="bg-white hover:bg-amber-100 text-amber-800 border border-amber-200 text-lg px-8 py-4 rounded-full font-semibold shadow-sm transition-all">
+                        Como funciona?
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Decorative Background Elements -->
+            <div class="absolute top-0 left-0 w-64 h-64 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-amber-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 translate-x-1/3 translate-y-1/3"></div>
+        </header>
+
+        <!-- About Section -->
+        <section id="sobre" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-amber-900 mb-8">Como usar este calendário?</h2>
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <div class="p-6 rounded-2xl bg-amber-50 border border-amber-100">
+                        <div class="text-3xl mb-4">📖</div>
+                        <h3 class="text-xl font-bold text-amber-900 mb-2">Leia a História</h3>
+                        <p class="text-amber-800 text-sm leading-relaxed">Cada dia traz um pedacinho da narrativa do nascimento de Jesus, focado em sensações e sentimentos.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-emerald-50 border border-emerald-100">
+                        <div class="text-3xl mb-4">✨</div>
+                        <h3 class="text-xl font-bold text-emerald-900 mb-2">Cumpra a Missão</h3>
+                        <p class="text-emerald-800 text-sm leading-relaxed">Uma atividade prática, simples e divertida para fazer em família e tirar a história do papel.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-amber-50 border border-amber-100">
+                        <div class="text-3xl mb-4">❤️</div>
+                        <h3 class="text-xl font-bold text-amber-900 mb-2">Crie Memórias</h3>
+                        <p class="text-amber-800 text-sm leading-relaxed">O objetivo não é perfeição, mas sim conexão. Aproveite os momentos juntos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendar Grid Section -->
+        <section id="calendario" class="py-20 px-6 bg-amber-50">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-amber-900">Seu Calendário do Advento</h2>
+                    <p class="text-amber-700 mt-4">Clique no dia de hoje para revelar a surpresa.</p>
+                </div>
+
+                <!-- The Grid -->
+                <div id="day-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6">
+                    <!-- JS will populate this -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-amber-900 text-amber-100 py-12 text-center">
+            <div class="container mx-auto px-6">
+                <p class="text-2xl font-serif font-bold mb-4">Feliz Natal</p>
+                <p class="text-sm opacity-70">Que a luz dessa jornada ilumine sua casa o ano todo.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- MODAL (Hidden by default) -->
+    <div id="modal-overlay" class="fixed inset-0 z-50 hidden bg-amber-950/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div id="modal-content" class="bg-white w-full max-w-2xl max-h-[90vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300">
+            
+            <!-- Modal Header -->
+            <div class="h-32 bg-gradient-to-r from-emerald-600 to-emerald-800 relative flex items-end p-6">
+                <button id="close-modal" class="absolute top-4 right-4 text-white/80 hover:text-white bg-black/10 hover:bg-black/20 rounded-full p-2 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div>
+                    <span id="modal-day-badge" class="bg-amber-400 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow-sm">Dia 1</span>
+                    <h3 id="modal-title" class="text-2xl md:text-3xl font-bold text-white mt-2 shadow-sm">Título do Dia</h3>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 md:p-8 overflow-y-auto custom-scrollbar">
+                <div class="mb-8">
+                    <h4 class="text-sm font-bold text-amber-500 uppercase tracking-wider mb-3">A História de Hoje</h4>
+                    <p id="modal-story" class="text-lg text-amber-900 leading-relaxed font-light"></p>
+                </div>
+
+                <div class="bg-amber-50 rounded-xl p-6 border border-amber-100">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-white p-3 rounded-full shadow-sm text-2xl">✨</div>
+                        <div>
+                            <h4 class="text-lg font-bold text-emerald-800 mb-2">Missão do Dia</h4>
+                            <div id="modal-mission" class="text-emerald-900/80 leading-relaxed"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-gray-50 p-4 border-t border-gray-100 flex justify-between items-center">
+                <button id="prev-day-btn" class="text-sm font-medium text-gray-500 hover:text-emerald-700 flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    ← Dia Anterior
+                </button>
+                <button id="next-day-btn" class="text-sm font-medium text-emerald-700 hover:text-emerald-900 flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-emerald-50 transition-colors">
+                    Próximo Dia →
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== LÓGICA DE LOGIN =====
+            const correctCode = "NATAL2025"; // <--- SUA SENHA AQUI (Pode mudar)
+            const loginScreen = document.getElementById('login-screen');
+            const siteContent = document.getElementById('site-content');
+            const loginForm = document.getElementById('login-form');
+            const accessCodeInput = document.getElementById('access-code');
+            const errorMsg = document.getElementById('error-msg');
+
+            // Verificar se já está logado (sessão simples)
+            if (localStorage.getItem('jornada_natal_acesso') === 'true') {
+                loginScreen.style.display = 'none';
+                siteContent.classList.remove('opacity-0');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const inputCode = accessCodeInput.value.trim().toUpperCase();
+
+                if (inputCode === correctCode) {
+                    // Sucesso
+                    localStorage.setItem('jornada_natal_acesso', 'true');
+                    loginScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loginScreen.style.display = 'none';
+                        siteContent.classList.remove('opacity-0');
+                        document.body.classList.remove('overflow-hidden');
+                    }, 500);
+                } else {
+                    // Erro
+                    errorMsg.classList.remove('hidden');
+                    accessCodeInput.classList.add('border-red-500');
+                    accessCodeInput.classList.add('text-red-600');
+                }
+            });
+
+            accessCodeInput.addEventListener('input', () => {
+                errorMsg.classList.add('hidden');
+                accessCodeInput.classList.remove('border-red-500');
+                accessCodeInput.classList.remove('text-red-600');
+            });
+
+            // ===== DADOS DO CALENDÁRIO =====
+            const journeyData = [
+                {
+                    day: 1,
+                    title: "A Visita da Luz",
+                    story: "Naquela tarde calma, o vento balançava a cortina, trazendo um cheiro doce de flores do campo. De repente, o quarto de Maria mudou. Não havia lâmpadas, mas tudo se iluminou com um brilho suave, dourado e acolhedor. Um anjo, feito de pura serenidade, apareceu ali. Ele não assustava; pelo contrário, trazia uma paz que parecia abraçar os ombros dela. Com voz de brisa mansa, ele contou que uma missão linda estava para começar e que um bebê muito especial viria. O coração de Maria bateu forte, não de medo, mas de uma alegria quentinha, como se o sol tivesse nascido dentro do seu peito.",
+                    mission: "<strong>Anjo de Papel em Leque</strong><br>Dobrem duas folhas de papel em sanfona (leque). Unam ao meio para formar as asas e o corpo. Colem uma bolinha de papel ou algodão para a cabeça. Pendurem na porta do quarto da criança."
+                },
+                {
+                    day: 2,
+                    title: "O Calor no Peito",
+                    story: "Depois que a luz intensa se foi, a casa parecia a mesma, mas Maria sentia tudo diferente. Havia um calorzinho constante dentro dela, como se uma pequena chama de vela estivesse acesa em seu coração. Cada barulho da rua, cada pássaro cantando parecia celebrar um segredo. Ela parou perto da janela, sentiu o vento tocar seu rosto e sorriu sozinha. Não sabia ainda como seria essa grande aventura, mas sentia que não estava sozinha. Tocou a barriga com carinho e respirou fundo. Às vezes, o coração da gente entende as coisas bonitas antes mesmo da cabeça conseguir explicar. O amor já estava crescendo ali.",
+                    mission: "<strong>Leite Quentinho da Conversa</strong><br>Preparem um leite morno (com canela, chocolate ou mel). Sentem-se juntos e conversem: \"O que deixa seu coração quentinho como esse leite?\". Vale abraço, beijo, ou brincar junto."
+                },
+                {
+                    day: 3,
+                    title: "A Parceria de José",
+                    story: "Maria sabia que precisava dividir aquele segredo. Numa tarde alaranjada pelo pôr do sol, contou tudo a José: a luz, a visita, a sensação de paz. José ouviu em silêncio. Seus olhos mostravam surpresa, mas logo se encheram de ternura. Ele não precisou de muitas explicações para sentir a verdade no olhar dela. Segurou firme a mão de Maria e disse com voz rouca e segura: \"Eu estou com você. Vamos caminhar juntos\". Maria sentiu o peso sair das costas. Ter alguém para dividir a estrada e segurar nossa mão faz qualquer caminho desconhecido parecer mais fácil e bonito.",
+                    mission: "<strong>A Arte do Apoio</strong><br>Peguem um cabo de vassoura ou um lençol dobrado. Cada um segura uma ponta. Coloquem uma almofada no meio. O desafio é andar pela casa equilibrando a almofada juntos, sem deixar cair, mostrando como a cooperação é importante."
+                },
+                {
+                    day: 4,
+                    title: "Arrumando a Bagagem",
+                    story: "A notícia chegou: precisariam viajar para longe, até Belém. Maria e José começaram a organizar o que levariam. Não tinham muitas coisas, mas cada item era escolhido com amor: um cobertor macio, um cantil com água fresca, um tecido guardado para o bebê. Enquanto dobravam as roupas, conversavam sobre a estrada, imaginando as paisagens. Maria pensava que a vida é uma grande viagem e que o mais importante não é o que levamos na mochila, mas quem está ao nosso lado. O essencial cabia ali: coragem, afeto e a certeza de que estavam prontos para partir.",
+                    mission: "<strong>Biscoitos de Viagem</strong><br>Preparem juntos uma receita simples de biscoitos ou um lanche especial (pode ser sanduíche cortado em formatos divertidos) e embalem como se fossem levar para uma grande aventura."
+                },
+                {
+                    day: 5,
+                    title: "O Primeiro Passo",
+                    story: "O sol estava nascendo quando colocaram os pés na estrada. O caminho era de terra, cheio de pedrinhas e curvas. O som dos passos fazia um ritmo constante: *tec, tec, tec*. O ar da manhã era fresco e cheiroso. Maria olhava para o horizonte, que parecia infinito. Não era uma caminhada fácil, mas José estava sempre atento, oferecendo o braço quando o chão ficava irregular. A cada quilômetro, eles aprendiam que grandes jornadas são feitas de pequenos passos. Não precisavam correr, apenas continuar andando, um passo de cada vez, com paciência e confiança no destino.",
+                    mission: "<strong>Sonoplastia da Viagem</strong><br>Vamos criar os sons da história? Usem a boca para fazer o vento (*shhh*), batam as mãos nas pernas para fazer os passos (*tec-tec*) e usem sacolas plásticas para o som das folhas. Contem um pedacinho da viagem fazendo os sons juntos."
+                },
+                {
+                    day: 6,
+                    title: "A Caixa da Coragem",
+                    story: "O tempo mudou e nuvens cinzas cobriram o sol. O vento ficou mais forte e a estrada parecia menos amigável. Maria apertou o xale contra o corpo. Sentiu um friozinho na barriga — aquele medo do desconhecido. Mas José sorriu para ela, e aquele sorriso funcionou como um escudo. Maria percebeu que ter coragem não é deixar de sentir medo, mas seguir em frente mesmo com as pernas tremendo um pouquinho. Ela respirou fundo, ergueu a cabeça e continuou. A força que precisava não vinha de fora, mas pulsava forte dentro do seu próprio peito.",
+                    mission: "<strong>Caixa Misteriosa</strong><br>Coloque um objeto dentro de uma caixa de sapatos fechada (com um buraco para a mão). A criança deve colocar a mão e adivinhar o que é apenas pelo tato, exercitando a coragem de enfrentar o desconhecido."
+                },
+                {
+                    day: 7,
+                    title: "Luzes na Escuridão",
+                    story: "A noite chegou no meio da estrada. O céu ficou escuro como veludo, mas logo se encheu de pontinhos brilhantes. Eram milhares de estrelas piscando, como se fossem janelinhas abertas no céu. Maria sentou-se para descansar e observou a lua cheia iluminando o caminho prateado à frente. O escuro não era assustador; era silencioso e calmo. Ela entendeu que, para vermos o brilho das estrelas, precisamos da escuridão da noite. Mesmo quando tudo parece escuro em nossa vida, sempre existe uma luzinha brilhando em algum lugar, guiando nossos passos com esperança.",
+                    mission: "<strong>Teatro de Sombras</strong><br>Apaguem as luzes e usem uma lanterna (ou a lanterna do celular) contra uma parede lisa. Façam sombras com as mãos (pássaros, cães, coelhos) e brinquem com as formas que a luz cria no escuro."
+                },
+                {
+                    day: 8,
+                    title: "A Semente da Esperança",
+                    story: "Caminhar cansa, mas a esperança renova. Naquela manhã, Maria sentiu o bebê se mexer, como uma borboleta batendo asas na barriga. Aquilo a fez sorrir largo. José parou para olhar uma pequena florzinha amarela que nascia no meio de duas pedras secas na estrada. Como ela conseguiu crescer ali? Era a força da vida. Maria pensou que a esperança é exatamente assim: uma semente teimosa que brota até nos lugares difíceis. Eles seguiram viagem com o passo mais leve, lembrando que coisas maravilhosas crescem devagar, no tempo certo, sem pressa.",
+                    mission: "<strong>Plantando a Vida</strong><br>Plantem grãos de feijão ou lentilha em um algodão úmido num potinho. Explique que vamos cuidar dele todos os dias até o Natal, vendo a vida crescer, assim como o bebê na história."
+                },
+                {
+                    day: 9,
+                    title: "Tesouros do Caminho",
+                    story: "A paisagem mudava o tempo todo. Ora passavam por árvores altas que faziam sombra, ora por campos abertos cheios de arbustos. Maria, curiosa, observava os detalhes. Viu uma pedra com formato de coração, uma folha vermelha caída e ouviu o canto de um pássaro azul. José pegou uma florzinha caída e colocou no cabelo dela. Mesmo cansados, eles brincavam de encontrar beleza onde ninguém mais via. A viagem ficava mais curta quando os olhos procuravam encanto. Aprenderam que o mundo está cheio de pequenos tesouros escondidos, esperando apenas um olhar atento para serem descobertos.",
+                    mission: "<strong>Caça à Natureza</strong><br>Desçam ao jardim, parque ou pátio. A missão é encontrar: uma folha diferente, uma pedrinha bonita e um graveto. Em casa, façam uma colagem ou um \"quadro\" com esses tesouros naturais."
+                },
+                {
+                    day: 10,
+                    title: "O Poder do Carinho",
+                    story: "As pernas de Maria doíam e as costas de José estavam pesadas de carregar as bolsas. Resolveram parar à sombra de uma oliveira antiga. José massageou os pés cansados de Maria com cuidado. Maria limpou o suor da testa de José com um pano fresco. Não precisavam dizer nada; o carinho falava por eles. Aquele toque gentil recarregou as energias melhor que qualquer sono profundo. Descobriram que o afeto é um combustível mágico: quando cuidamos do outro, nós também ficamos mais fortes. O amor cura o cansaço e faz a gente querer continuar.",
+                    mission: "<strong>Spa da Família</strong><br>Momento de relaxamento. A criança faz uma massagem suave (pode usar creme) nas mãos ou pés dos pais, e depois os pais fazem na criança. Coloquem uma música calma de fundo."
+                },
+                {
+                    day: 11,
+                    title: "Pausa para Nutrir",
+                    story: "A água do cantil estava fresca e o pão que levaram estava saboroso. Fizeram um piquenique improvisado na beira da estrada. Comer devagar, sentindo o gosto de cada pedaço, foi um presente. Maria agradeceu pelo alimento que dava força para o bebê crescer e para eles caminharem. José partiu o pão e dividiu o maior pedaço com ela. Aquele momento simples de nutrição lembrou que precisamos cuidar do nosso corpo, pois ele é a nossa casa no mundo. Cuidar de si mesmo também é uma forma bonita de dizer \"eu te amo\".",
+                    mission: "<strong>Piquenique na Sala</strong><br>Estendam uma toalha no chão da sala. Sirvam frutas picadas, suco e sanduíches. Comer no chão, saindo da rotina da mesa, torna o momento uma aventura divertida e conecta a família."
+                },
+                {
+                    day: 12,
+                    title: "A Alegria nos Detalhes",
+                    story: "Já estavam viajando há dias, mas o riso não faltava. Uma pequena lebre do deserto atravessou o caminho correndo e fez Maria gargalhar com seus pulos. José imitou o som de uma coruja e os dois riram juntos. A alegria não estava na chegada, estava ali, no meio da poeira e do cansaço. Perceberam que a felicidade não é algo grande que a gente espera acontecer no fim; ela é feita de migalhas douradas espalhadas pelo dia. Sorrir deixava a mala mais leve e o caminho mais curto. O coração alegre é o melhor companheiro de viagem.",
+                    mission: "<strong>Banda da Cozinha</strong><br>Vamos fazer música! Peguem colheres de pau, panelas (tambores) e potes com arroz (chocalhos). Criem um ritmo alegre juntos para celebrar a viagem. Vale marchar pela casa tocando!"
+                },
+                {
+                    day: 13,
+                    title: "O Som do Silêncio",
+                    story: "A noite caiu mais cedo e o mundo parecia prender a respiração. Não havia barulho de cidade, nem de pessoas. Apenas o vento soprando nas folhas e os grilos cantando sua música noturna. Maria fechou os olhos e apenas escutou. O silêncio não era vazio; era cheio de paz. Ela sentiu que o momento da chegada estava perto. José, ao lado, também respirava calmo. Ficar em silêncio juntos era uma forma de oração sem palavras. A calma daquela noite preparava o coração deles para a grande maravilha que estava por vir.",
+                    mission: "<strong>O Jogo do Silêncio</strong><br>Desafiem-se a ficar 1 minuto em total silêncio, de olhos fechados. Depois, cada um conta o que conseguiu ouvir (um carro longe, a geladeira, um pássaro, a respiração)."
+                },
+                {
+                    day: 14,
+                    title: "Luzes no Horizonte",
+                    story: "Finalmente, depois de uma curva na estrada, eles viram luzes tremeluzindo ao longe. Era Belém! As janelas das casas brilhavam como velas acesas esperando por visitas. O coração de Maria disparou de emoção. \"Chegamos\", disse José, aliviado. Mesmo exaustos, a visão da cidade trouxe um novo ânimo. As luzes pareciam dar boas-vindas, prometendo descanso e abrigo. Aquela vista renovou as esperanças. Eles apressaram o passo, sabendo que a longa caminhada estava chegando ao fim e que uma nova história começaria naquelas ruas iluminadas.",
+                    mission: "<strong>Janelinha de Papel</strong><br>Desenhem uma janela no papel e recortem as partes de dentro para ela \"abrir\". Colem um papel amarelo atrás ou coloquem contra uma luz da casa para parecer que há luz dentro da janelinha de Belém."
+                },
+                {
+                    day: 15,
+                    title: "Procurando Lugar",
+                    story: "A cidade estava cheia de gente, barulhenta e agitada. José bateu em uma porta, depois em outra. Muitas estavam ocupadas. Maria sentiu as pernas pesarem, mas mesmo quando recebiam um \"não\", encontravam olhares de desculpa e gestos gentis. Eles não desanimaram. Sabiam que o lugar certo apareceria. Às vezes, a vida fecha algumas portas para que a gente encontre o lugar exato onde deveria estar. José segurou a mão de Maria com firmeza, transmitindo segurança. Eles continuaram procurando, confiando que o abrigo perfeito os esperava.",
+                    mission: "<strong>Destralhe do Bem</strong><br>Para algo novo entrar, precisamos abrir espaço. Escolham juntos 3 brinquedos ou peças de roupa em bom estado que não usam mais para doar. Coloquem numa sacola bonita para entregar a quem precisa."
+                },
+                {
+                    day: 16,
+                    title: "O Refúgio Simples",
+                    story: "Um senhor bondoso indicou um lugar nos fundos de uma estalagem. Não era um quarto chique, era um estábulo onde os animais dormiam. Mas era quentinho, cheiroso de palha seca e muito tranquilo. Quando Maria entrou, sentiu uma paz imensa. O luxo não importava; o que importava era o acolhimento. José limpou um cantinho e fez uma cama macia com feno. Ali, naquele lugar simples e humilde, eles se sentiram protegidos. O amor transformou aquele curral no palácio mais bonito do mundo, pronto para receber um rei.",
+                    mission: "<strong>Cine Cabana</strong><br>Usem lençóis e almofadas para fazer uma cabana na sala (o estábulo). Entrem todos lá dentro com pipoca e assistam juntos a um filme de Natal ou um desenho sobre amizade."
+                },
+                {
+                    day: 17,
+                    title: "A Bondade Vizinha",
+                    story: "Enquanto se acomodavam, vizinhos e viajantes perceberam o casal. Uma senhora trouxe água limpa, um menino ofereceu uma manta extra. Maria sorria agradecida. Aqueles gestos pequenos de estranhos aqueciam a alma. A bondade é uma linguagem que todo mundo entende. Ninguém ali tinha muito, mas o pouco que tinham, dividiam com alegria. O estábulo se encheu de generosidade humana. Maria percebeu que o bebê nasceria cercado não de ouro, mas da riqueza mais valiosa que existe: a solidariedade e o carinho das pessoas.",
+                    mission: "<strong>História de Amizade</strong><br>Em vez de um presente, hoje o presente é uma história. Leiam juntos um livro sobre amigos ajudando amigos ou contem uma história da família sobre quando alguém foi muito generoso com vocês."
+                },
+                {
+                    day: 18,
+                    title: "Os Guardiões da Natureza",
+                    story: "O estábulo não estava vazio. Havia uma vaca mastigando devagar, um burrinho curioso e algumas pombas nas vigas do teto. Os animais pareciam entender que precisavam fazer silêncio e aquecer o ambiente. Eles não se assustaram com Maria e José; pelo contrário, chegaram perto para oferecer seu calor. A natureza toda parecia estar em sintonia, protegendo aquele momento. Maria fez carinho no burrinho que os carregou por tanto tempo. Havia uma harmonia perfeita entre as pessoas e os bichos, todos unidos pela mesma espera mágica.",
+                    mission: "<strong>Banquete dos Pássaros</strong><br>Passem pasta de amendoim ou mel em uma pinha ou rolo de papel e colem sementes de pássaro (ou alpiste/painço). Pendurem numa árvore ou na janela para alimentar os passarinhos livres."
+                },
+                {
+                    day: 19,
+                    title: "A Grande Noite Chega",
+                    story: "O sol se pôs e uma noite diferente de todas as outras começou. O ar estava parado, doce e misterioso. José acendeu uma pequena lamparina que iluminou o rosto sereno de Maria. Tudo estava pronto. Não havia barulho, pressa ou medo. Apenas uma certeza gigante de que o mundo estava prestes a mudar para melhor. Maria sentiu uma onda de gratidão profunda. Ela fechou os olhos e respirou a paz daquele instante. Era a calmaria sagrada que antecede os milagres. O tempo parecia suspenso, esperando o primeiro choro de vida.",
+                    mission: "<strong>Concerto de Paz</strong><br>Deitem-se no chão ou no sofá, apaguem as luzes e coloquem uma música instrumental bem suave. Fiquem apenas ouvindo e relaxando o corpo, sentindo a paz da \"Grande Noite\" se aproximando."
+                },
+                {
+                    day: 20,
+                    title: "A Estrela Guia",
+                    story: "De repente, no alto do céu, uma estrela brilhou com uma força incrível. Sua luz era prateada, intensa e pulsante. Ela era tão grande que parecia apontar um dedo de luz direto para o estábulo. Pastores que estavam nos campos olharam para cima, maravilhados. Aquela estrela não era comum; era um convite, um mapa desenhado no céu chamando a alegria para entrar. José olhou pela fresta do telhado e viu o brilho iluminar a palha. A luz do céu anunciava que a Luz da Terra estava chegando.",
+                    mission: "<strong>Projetor de Estrelas</strong><br>Peguem um rolo de papel higiênico, cubram uma ponta com papel filme (plástico) e desenhem uma estrela nele com canetinha permanente. Apaguem a luz, coloquem uma lanterna dentro do rolo e projetem a estrela na parede."
+                },
+                {
+                    day: 21,
+                    title: "O Caminho Iluminado",
+                    story: "A luz da estrela guiou pastores humildes que queriam ver o bebê. Eles vieram pelos campos, guiados apenas pelo brilho e pela intuição do coração. Traziam sorrisos e canções simples. Maria ouviu os passos se aproximando e sentiu o coração transbordar. Aquela noite unia o céu e a terra, o rico e o pobre, o longe e o perto. Todos caminhavam em direção ao amor. O caminho até o estábulo se tornou uma estrada de luz, onde cada pessoa que chegava trazia mais calor humano para aquecer a noite fria.",
+                    mission: "<strong>Cantoria em Família</strong><br>Os pastores chegaram cantando, e nós também vamos! Escolham uma música de Natal que todos gostem (pode ser \"Bate o Sino\" ou outra) e cantem juntos bem alto e felizes. Vale dançar também!"
+                },
+                {
+                    day: 22,
+                    title: "Presentes Invisíveis",
+                    story: "Maria olhou para José e para o berço de palha improvisado. Eles não tinham ouro nem riquezas para dar ao filho, mas tinham algo muito maior. Tinham a \"Mala dos Presentes Invisíveis\". Nela, guardavam: coragem para defender, ternura para ninar, paciência para ensinar e um amor infinito. Esses eram os verdadeiros presentes que o bebê receberia. José prometeu proteger, e Maria prometeu amar incondicionalmente. Naquela noite, entenderam que o melhor presente que podemos dar a alguém é a nossa própria presença e o nosso melhor sentimento.",
+                    mission: "<strong>Mala da Imaginação</strong><br>Peguem uma mala ou bolsa vazia. A brincadeira é colocar \"presentes invisíveis\" dentro. Façam a mímica de pegar algo e digam: \"Eu estou colocando um abraço de urso\", \"Eu coloco muita risada\", \"Eu coloco coragem\"."
+                },
+                {
+                    day: 23,
+                    title: "Enviando Amor",
+                    story: "Faltava muito pouco. O bebê já quase chegava. Maria pensou nos avós, nos primos, nos amigos distantes. A alegria era tanta que não cabia no peito; precisava ser espalhada. Ela fechou os olhos e imaginou raios de amor saindo dali e tocando o coração de cada pessoa que ela amava no mundo. José segurou a mão dela e juntos fizeram um pensamento bom para toda a humanidade. O Natal é isso: quando o amor nasce em nós, ele precisa viajar e tocar o coração de quem está longe.",
+                    mission: "<strong>Mensagem do Coração</strong><br>Gravem um vídeo curto ou um áudio carinhoso para os avós, tios ou padrinhos dizendo o quanto eles são importantes. Enviem essa mensagem de amor digital para quem está longe."
+                },
+                {
+                    day: 24,
+                    title: "O Nascimento do Amor",
+                    story: "E então, na quietude da madrugada, ele nasceu. O choro do bebê foi música para os ouvidos de Maria e José. Ele era pequeno, frágil, mas seu olhar tinha a força do universo. Enroladinho em panos, foi colocado na manjedoura. A estrela brilhou no máximo de sua potência. Os animais se aproximaram. A alegria explodiu em silêncio e em lágrimas de felicidade. O amor havia ganhado um rosto, um corpo e um nome. Jesus estava ali, e com ele, a promessa de que o amor sempre vence, todas as vezes. Feliz Natal!",
+                    mission: "<strong>Festa do Bebê</strong><br>Façam um pequeno bolo (ou cupcake) e cantem \"Parabéns\" para Jesus. Celebrem o nascimento com alegria, abraços apertados em família e gratidão por estarem juntos nessa noite mágica."
+                }
+            ];
+
+            const dayGrid = document.getElementById('day-grid');
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalContent = document.getElementById('modal-content');
+            const closeModalBtn = document.getElementById('close-modal');
+            
+            // Elementos do Modal
+            const modalTitle = document.getElementById('modal-title');
+            const modalDayBadge = document.getElementById('modal-day-badge');
+            const modalStory = document.getElementById('modal-story');
+            const modalMission = document.getElementById('modal-mission');
+            const prevBtn = document.getElementById('prev-day-btn');
+            const nextBtn = document.getElementById('next-day-btn');
+
+            let currentOpenDay = 1;
+
+            // Renderizar a Grade
+            journeyData.forEach(data => {
+                const card = document.createElement('div');
+                card.className = `
+                    day-card bg-white rounded-xl shadow-sm border border-amber-100 
+                    cursor-pointer transition-all duration-300 hover:shadow-lg hover:border-emerald-200 
+                    flex flex-col items-center justify-center h-32 relative overflow-hidden group
+                `;
+                
+                card.innerHTML = `
+                    <div class="absolute top-0 left-0 w-full h-1 bg-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                    <span class="text-4xl font-serif font-bold text-amber-900/20 group-hover:text-emerald-600 transition-colors">${data.day}</span>
+                    <span class="text-xs font-semibold text-amber-800 mt-2 uppercase tracking-wide opacity-60 group-hover:opacity-100">Dia</span>
+                `;
+
+                card.addEventListener('click', () => openModal(data.day));
+                dayGrid.appendChild(card);
+            });
+
+            // Lógica do Modal
+            function openModal(day) {
+                const data = journeyData.find(d => d.day === day);
+                if (!data) return;
+
+                currentOpenDay = day;
+                
+                // Preencher dados
+                modalTitle.textContent = data.title;
+                modalDayBadge.textContent = `Dia ${data.day}`;
+                modalStory.textContent = data.story;
+                modalMission.innerHTML = data.mission;
+
+                // Atualizar botões
+                prevBtn.disabled = day === 1;
+                nextBtn.disabled = day === 24;
+                prevBtn.classList.toggle('opacity-50', day === 1);
+                nextBtn.classList.toggle('opacity-50', day === 24);
+
+                // Mostrar Modal
+                modalOverlay.classList.remove('hidden');
+                // Pequeno delay para animação CSS funcionar
+                setTimeout(() => {
+                    modalOverlay.classList.remove('opacity-0');
+                    modalContent.classList.remove('scale-95');
+                    modalContent.classList.add('scale-100');
+                }, 10);
+                
+                document.body.style.overflow = 'hidden'; // Prevenir rolagem do fundo
+            }
+
+            function closeModal() {
+                modalOverlay.classList.add('opacity-0');
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+                
+                setTimeout(() => {
+                    modalOverlay.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+
+            // Event Listeners
+            closeModalBtn.addEventListener('click', closeModal);
+            
+            // Fechar ao clicar fora
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) closeModal();
+            });
+
+            // Navegação do Modal
+            prevBtn.addEventListener('click', () => {
+                if (currentOpenDay > 1) openModal(currentOpenDay - 1);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentOpenDay < 24) openModal(currentOpenDay + 1);
+            });
+
+            // Atalho de Teclado (ESC)
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modalOverlay.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
