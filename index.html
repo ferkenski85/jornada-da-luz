@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário do Advento de Natal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Mountains+of+Christmas:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+        <div class="login-card">
+            <h1>Bem-vindo ao Natal Mágico</h1>
+            <p>Digite a senha para abrir seu calendário</p>
+            <div class="input-group">
+                <input type="password" id="password-input" placeholder="Senha Mágica">
+                <button id="login-btn">Entrar</button>
+            </div>
+            <p id="error-message" class="hidden">Senha incorreta. Tente novamente!</p>
+        </div>
+    </div>
+
+    <!-- Calendar Screen -->
+    <div id="calendar-screen" class="screen hidden">
+        <header>
+            <h1>Contagem Regressiva de Natal</h1>
+            <p>Uma história e uma missão para cada dia</p>
+        </header>
+        <main class="calendar-grid" id="calendar-grid">
+            <!-- Days will be injected here by JS -->
+        </main>
+    </div>
+
+    <!-- Content Modal -->
+    <div id="modal-overlay" class="hidden">
+        <div class="modal-content">
+            <button id="close-modal" aria-label="Fechar">&times;</button>
+            <div class="modal-header">
+                <span id="modal-day-number">Dia 1</span>
+                <h2 id="modal-title">Título da História</h2>
+            </div>
+            <div class="modal-body">
+                <div class="story-section">
+                    <h3><span class="icon">📖</span> História</h3>
+                    <p id="modal-story">Texto da história...</p>
+                </div>
+                <div class="mission-section">
+                    <h3><span class="icon">✨</span> Missão do Dia</h3>
+                    <p id="modal-mission">Texto da missão...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
