@@ -150,4 +150,3 @@ const calendarData = [
         mission: "O Café da Manhã da Luz\n\nNão há tarefas hoje, apenas celebração! Preparem um café da manhã gostoso em família (com as sobras do bolo ou dos biscoitos!). Reúnam à mesa (ou no chão da sala) todas as coisas que vocês criaram durante a jornada: o anjo, a ovelhinha, a cidade de luzes, o buquê, o desenho. Olhem para tudo o que construíram juntos e digam um para o outro: \"Obrigado por caminhar comigo. Feliz Natal!\""
     }
 ];
-
