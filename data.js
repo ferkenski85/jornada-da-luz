@@ -3,7 +3,7 @@ const calendarData = [
         day: 1,
         title: "A Visita da Luz",
         story: "Naquela tarde calma, o vento balançava a cortina, trazendo um cheiro doce de flores do campo. De repente, o quarto de Maria mudou. Não havia lâmpadas, mas tudo se iluminou com um brilho suave, dourado e acolhedor. Um anjo, feito de pura serenidade, apareceu ali. Ele não assustava; pelo contrário, trazia uma paz que parecia abraçar os ombros dela. Com voz de brisa mansa, ele contou que uma missão linda estava para começar e que um bebê muito especial viria. O coração de Maria bateu forte, não de medo, mas de uma alegria quentinha, como se o sol tivesse nascido dentro do seu peito.",
-        mission: "Anjo de Papel em Leque\n\nAnjo de Papel Dobrado\n1) Pegue 1 folha A4 e corte ao meio.\n2) Dobre cada uma das duas partes como um “leque” (vai e vem).\n3) Amarre um dos leques com uma fita bem na ponta. Corte o outro leque ao meio.\n4) Se quiser, arredonde as pontas dos leques.\n5) Cole as partes menores na parte maior para formar as asas.\n6) Faça a cabeça com um círculo de papel, EVA ou uma bolinha de papel amassado com fita.\n7) Cole a cabeça no centro das asas.\n8) Decorem com lã, glitter, adesivos ou canetinha."
+        mission: "Anjo de Papel em Leque\n\nPegue 1 folha A4 e corte ao meio.\n1) Dobre cada uma das duas partes como um “leque” (vai e vem).\n2) Amarre um dos leques com uma fita bem na ponta. Corte o outro leque ao meio.\n3) Se quiser, arredonde as pontas dos leques.\n4) Cole as partes menores na parte maior para formar as asas.\n5) Faça a cabeça com um círculo de papel, EVA ou uma bolinha de papel amassado com fita.\n6) Cole a cabeça no centro das asas.\n7) Decorem com lã, glitter, adesivos ou canetinha."
     },
     {
         day: 2,
@@ -21,13 +21,13 @@ const calendarData = [
         day: 4,
         title: "Arrumando a Bagagem",
         story: "A notícia chegou: Maria e José precisariam viajar para longe, até Belém. Eles começaram a organizar o que levariam. Não tinham muitas coisas, mas cada item era escolhido com amor: um cobertor macio, um cantil com água fresca, um tecido guardado para o bebê. Enquanto dobravam as roupas, conversavam sobre a estrada, imaginando as paisagens. Maria pensava que a vida é uma grande viagem e que o mais importante não é o que levamos na mochila, mas quem está ao nosso lado. O essencial cabia ali: coragem, afeto e a certeza de que estavam prontos para partir.",
-        mission: "Biscoitos de Viagem\n\nPreparem juntos uma receita simples de biscoitos ou um lanche especial (pode ser sanduíche cortado em formatos divertidos), embalem como se fossem para uma grande aventura e façam um passeio juntos, lembrando como é bom ter alguém ao nosso lado."
+        mission: "Biscoitos de Viagem\n\nPreparem juntos uma receita simples de biscoitos ou um lanche especial (pode ser sanduíche cortado em formatos divertidos). Embalem como se fossem para uma grande aventura e façam um passeio juntos, lembrando como é bom ter alguém ao nosso lado."
     },
     {
         day: 5,
         title: "O Longo Caminho Começa",
         story: "O sol estava nascendo quando Maria e José deram os primeiros passos rumo a Belém. A estrada à frente era comprida, cheia de pedrinhas soltas, galhos secos e poeira que subia. Mesmo assim, havia algo bonito naquele início de jornada: o som ritmado dos passos, o vento que mudava a cada curva e a sensação de que cada movimento tinha um propósito maior. Às vezes, Maria parava para respirar fundo e ganhar fôlego. Não era uma caminhada fácil, mas José estava sempre por perto, oferecendo apoio silencioso. A cada passo, lembravam que alguns caminhos são longos, mas levam a lugares especiais.",
-        mission: "Trilha das Descobertas — Monte um caminho pela casa com almofadas e objetos. Em cada parada, a criança deve observar algo com os sentidos: uma textura, uma cor ou um som diferente."
+        mission: "Trilha das Descobertas\n\nMonte um caminho pela casa com almofadas e objetos. Em cada parada, a criança deve observar algo com os sentidos: uma textura, uma cor ou um som diferente."
     },
     {
         day: 6,
@@ -45,7 +45,7 @@ const calendarData = [
         day: 8,
         title: "A Semente da Esperança",
         story: "O dia seguinte nasceu com um vento levinho e fresco que parecia empurrar a família suavemente para frente. Maria sentia o bebê se mexer e isso sempre trazia uma onda de esperança nova. José observava o caminho com muita atenção, procurando sempre a melhor direção para eles. Mesmo quando surgiam pedras maiores ou trechos mais difíceis de atravessar, eles respiravam fundo e seguiam persistentes. Maria percebeu que a esperança não é apenas um brilho distante — é algo que cresce devagar dentro da gente, como um farol silencioso que nunca se apaga. Ela segurou a barriga com carinho e sussurrou: “Estamos quase lá… vamos juntos.”",
-        mission: "A Vida na Janela\nMolhe um pedaço de algodão com água e coloque dentro de um saquinho plástico transparente (tipo zip lock), junto com 2 ou 3 grãos de feijão. Cole o saquinho com fita adesiva em uma janela onde bata sol. Assim, as crianças poderão acompanhar, dia após dia, a semente se abrindo, a raiz saindo e a vida acontecendo, exercitando a paciência e a esperança enquanto esperam o broto crescer."
+        mission: "A Vida na Janela\n\nMolhe um pedaço de algodão com água e coloque dentro de um saquinho plástico transparente (tipo zip lock), junto com 2 ou 3 grãos de feijão. Cole o saquinho com fita adesiva em uma janela onde bata sol. Assim, as crianças poderão acompanhar, dia após dia, a semente se abrindo, a raiz saindo e a vida acontecendo, exercitando a paciência e a esperança enquanto esperam o broto crescer."
     },
     {
         day: 9,
@@ -81,7 +81,7 @@ const calendarData = [
         day: 14,
         title: "Luzes no Horizonte",
         story: "Depois de muito caminhar e esperar, as luzes de Belém finalmente apareceram brilhando à distância. Eram pequenas e tremeluzentes, mas enchiam o coração de Maria de uma emoção indescritível. A cada passo que davam, os sons da cidade ficavam mais próximos: vozes de pessoas, barulho de animais, o agito do dia começando a terminar. Maria estava exausta, mas a alegria pura de chegar renovava suas forças. José olhou para ela com imensa ternura e disse aliviado: “Conseguimos, chegamos”. Eles sabiam que ainda precisavam encontrar um abrigo para dormir, mas ver Belém ali diante deles já era uma grande vitória.",
-        mission: "A Cidade de Luzes - Transforme caixinhas vazias (de remédio ou pasta de dente) nas casas de Belém. Recorte janelinhas e cole pedaços de papel celofane ou papel manteiga colorido pelo lado de dentro. Faça um pequeno furo na parte de trás de cada caixa para encaixar uma luzinha de pisca-pisca (ou organize-as na frente de uma lanterna). Ao apagar as luzes da sala, a cidade brilhará com janelas coloridas, celebrando a chegada da família ao seu destino."
+        mission: "A Cidade de Luzes\n\nTransforme caixinhas vazias (de remédio ou pasta de dente) nas casas de Belém. Recorte janelinhas e cole pedaços de papel celofane ou papel manteiga colorido pelo lado de dentro. Faça um pequeno furo na parte de trás de cada caixa para encaixar uma luzinha de pisca-pisca (ou organize-as na frente de uma lanterna). Ao apagar as luzes da sala, a cidade brilhará com janelas coloridas, celebrando a chegada da família ao seu destino."
     },
     {
         day: 15,
@@ -99,19 +99,19 @@ const calendarData = [
         day: 17,
         title: "A Bondade Vizinha",
         story: "Enquanto eles preparavam o estábulo para a noite, algumas pessoas simples da cidade passaram por perto e ofereceram o que podiam para ajudar: um pedaço de pão fresco, um tecido limpo, um olhar sincero de bondade. Aqueles gestos pequenos de estranhos aqueciam a alma. Maria sorria agradecida. A bondade é uma linguagem que todo mundo entende. Ninguém ali tinha muito, mas o pouco que tinham, dividiam com alegria. O estábulo se encheu de generosidade humana. Maria percebeu que o bebê nasceria cercado não de ouro, mas da riqueza mais valiosa que existe: a solidariedade e o carinho das pessoas.",
-        mission: "Buquê da Amizade - Vamos espalhar a beleza da natureza! Vão até o jardim ou uma praça e colham algumas flores, folhas verdes bonitas ou raminhos (sempre respeitando a natureza, pegando o que já caiu ou o que tem em abundância). Juntem tudo fazendo um pequeno buquê e amarrem com um barbante ou fita. A missão é entregar esse presente natural para um vizinho, porteiro ou alguém da família, como um gesto de carinho e gratidão, assim como os moradores de Belém fizeram."
+        mission: "Buquê da Amizade\n\nVamos espalhar a beleza da natureza! Vão até o jardim ou uma praça e colham algumas flores, folhas verdes bonitas ou raminhos (sempre respeitando a natureza, pegando o que já caiu ou o que tem em abundância). Juntem tudo fazendo um pequeno buquê e amarrem com um barbante ou fita. A missão é entregar esse presente natural para um vizinho, porteiro ou alguém da família, como um gesto de carinho e gratidão, assim como os moradores de Belém fizeram."
     },
     {
         day: 18,
         title: "Os Guardiões da Natureza",
         story: "O ar naquela noite parecia diferente de todas as outras, como se o mundo inteiro estivesse prendendo a respiração em espera. Maria sentiu o bebê se mover suavemente, e José permaneceu firme ao lado dela, segurando sua mão com amor. Havia uma paz profunda preenchendo o estábulo, misturada a uma expectativa silenciosa e sagrada. O estábulo não estava vazio. Havia uma vaca mastigando devagar, um burrinho curioso e algumas pombas nas vigas do teto. Os animais pareciam entender que precisavam fazer silêncio e aquecer o ambiente. Eles não se assustaram com Maria e José; pelo contrário, chegaram perto para oferecer seu calor. A natureza toda parecia estar em sintonia, protegendo aquele momento. Maria fez carinho no burrinho que os carregou por tanto tempo. Havia uma harmonia perfeita entre as pessoas e os bichos, todos unidos pela mesma espera mágica.",
-        mission: "Potes de Cheiro do Estábulo\nSepare três potinhos que você tenha em casa (com furos na tampa ou cobertos com um tecido fino) e coloque dentro de cada um:\nPote 1: Grama seca ou chá de camomila (para lembrar o cheiro da palha/feno);\n\nPote 2: Cravo ou canela em pau (para o cheiro da madeira do estábulo);\n\nPote 3: Casca de laranja ou limão (para o frescor da natureza).\n\nAntes de iniciar a leitura, peça para a criança cheirar os potes e tentar adivinhar o que tem dentro. Durante a história, ao ler sobre a vaca mastigando e o ambiente acolhedor, convide a criança a sentir os aromas novamente, imaginando que ela está sentada dentro do estábulo junto com os animais."
+        mission: "Potes de Cheiro do Estábulo\n\nSepare três potinhos que você tenha em casa (com furos na tampa ou cobertos com um tecido fino) e coloque dentro de cada um:\nPote 1: Grama seca ou chá de camomila (para lembrar o cheiro da palha/feno);\n\nPote 2: Cravo ou canela em pau (para o cheiro da madeira do estábulo);\n\nPote 3: Casca de laranja ou limão (para o frescor da natureza).\n\nAntes de iniciar a leitura, peça para a criança cheirar os potes e tentar adivinhar o que tem dentro. Durante a história, ao ler sobre a vaca mastigando e o ambiente acolhedor, convide a criança a sentir os aromas novamente, imaginando que ela está sentada dentro do estábulo junto com os animais."
     },
     {
         day: 19,
         title: "A Grande Noite Chega",
         story: "O estábulo ficou ainda mais silencioso conforme a madrugada avançava. O ar estava calmo e parado, como se a natureza estivesse esperando o momento perfeito. José ajustou a palha mais uma vez, trouxe água fresca e fez o possível para que Maria estivesse plenamente confortável. Depois, ele acendeu uma pequena lamparina que iluminou o rosto sereno de Maria. Tudo estava pronto. Não havia barulho, pressa ou medo. Apenas uma certeza gigante de que o mundo estava prestes a mudar para melhor. Maria sentiu uma onda de gratidão profunda. Ela fechou os olhos e respirou a paz daquele instante. Era a calmaria sagrada que antecede os milagres. O tempo parecia suspenso, esperando o primeiro choro de vida.",
-        mission: "Recorte algumas estrelas usando papel alumínio ou papel amarelo. Antes de chamar a criança, esconda-as em lugares inusitados da sala: embaixo da mesa, atrás da cortina ou no pé do sofá. Apague todas as luzes, deixando o ambiente bem escuro, e entregue uma lanterna para a criança. A missão dela é explorar a sala com a luz, iluminando o estábulo como José fez, para caçar e encontrar todas as estrelas escondidas que anunciam a chegada do bebê."
+        mission: "Caça às Estrelas\n\nRecorte algumas estrelas usando papel alumínio ou papel amarelo. Antes de chamar a criança, esconda-as em lugares inusitados da sala: embaixo da mesa, atrás da cortina ou no pé do sofá. Apague todas as luzes, deixando o ambiente bem escuro, e entregue uma lanterna para a criança. A missão dela é explorar a sala com a luz, iluminando o estábulo como José fez, para caçar e encontrar todas as estrelas escondidas que anunciam a chegada do bebê."
     },
     {
         day: 20,
@@ -123,7 +123,7 @@ const calendarData = [
         day: 21,
         title: "O Caminho Iluminado",
         story: "Lá no alto do céu aveludado, a estrela mais brilhante começou a piscar, como um convite gentil aos pastores que descansavam nos campos. Guiados por essa luz mágica e pela intuição, eles caminharam devagar pela relva, trazendo não apenas presentes, mas melodias suaves e sorrisos sinceros. O silêncio da noite foi preenchido por uma alegria simples e contagiante. Maria ouviu os passos macios se aproximando e sentiu seu coração aquecer de gratidão. O pequeno estábulo, antes quieto, transformou-se em um ponto de encontro luminoso, onde o céu abraçava a terra. Cada novo visitante que chegava pela estrada de luz trazia seu carinho, afastando o frio lá fora e transformando aquele momento em um abraço coletivo, repleto de amor e harmonia.",
-        mission: "As Ovelhinhas dos Pastores - Transforme um rolo de papel higiênico vazio em uma ovelhinha! Passem cola em volta do rolo e cubram com bastante algodão para ficar bem fofinho. Depois, recortem o rostinho da ovelha (usem o molde no arquivo anexo ou desenhem vocês mesmos) e colem no rolinho. Enquanto montam o rebanho, coloquem músicas de Natal para tocar!"
+        mission: "As Ovelhinhas dos Pastores\n\nTransforme um rolo de papel higiênico vazio em uma ovelhinha! Passem cola em volta do rolo e cubram com bastante algodão para ficar bem fofinho. Depois, recortem o rostinho da ovelha (usem o molde no arquivo anexo ou desenhem vocês mesmos) e colem no rolinho. Enquanto montam o rebanho, coloquem músicas de Natal para tocar!"
     },
     {
         day: 22,
@@ -147,6 +147,7 @@ const calendarData = [
         day: 25,
         title: "A Luz é Você",
         story: "O sol da manhã de Natal entrou pela janela com uma cor diferente, dourada e viva. O tempo de espera acabou! Jesus nasceu e agora a luz que a gente tanto procurou não está mais numa estrela distante, nem apenas na lamparina de José. Essa luz agora mora dentro da nossa casa e dentro de cada um de nós. Maria e José olharam para o bebê e depois olharam para o mundo lá fora. Tudo parecia renovado. A promessa foi cumprida: o amor venceu. Hoje, não precisamos fazer malas, nem caminhar longe. Hoje é dia de ficar, de abraçar e de deixar essa alegria transbordar. O melhor presente já foi entregue: a vida juntos. Que a luz deste dia brilhe no seu coração o ano inteiro.",
-        mission: "O Café da Manhã da Luz - Não há tarefas hoje, apenas celebração! Preparem um café da manhã gostoso em família (com as sobras do bolo ou dos biscoitos!). Reúnam à mesa (ou no chão da sala) todas as coisas que vocês criaram durante a jornada: o anjo, a ovelhinha, a cidade de luzes, o buquê, o desenho. Olhem para tudo o que construíram juntos e digam um para o outro: \"Obrigado por caminhar comigo. Feliz Natal!\""
+        mission: "O Café da Manhã da Luz\n\nNão há tarefas hoje, apenas celebração! Preparem um café da manhã gostoso em família (com as sobras do bolo ou dos biscoitos!). Reúnam à mesa (ou no chão da sala) todas as coisas que vocês criaram durante a jornada: o anjo, a ovelhinha, a cidade de luzes, o buquê, o desenho. Olhem para tudo o que construíram juntos e digam um para o outro: \"Obrigado por caminhar comigo. Feliz Natal!\""
     }
 ];
+
